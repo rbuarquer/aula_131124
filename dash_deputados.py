@@ -55,9 +55,7 @@ if not contagem_estado.empty:
         y='quantidade',
         title='Número de Parlamentares por Estado',
         labels={'siglaUf': 'Estado', 'quantidade': 'Quantidade'},
-        color='siglaUf',
-    )
+           )
     st.plotly_chart(fig)
 else:
     st.write("Não há dados disponíveis para o filtro selecionado.")
-
