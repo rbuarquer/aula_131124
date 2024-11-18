@@ -16,6 +16,7 @@ dfmulheres = pd.DataFrame(data_mulheres)
 dfhomens = pd.DataFrame(data_homens)
 df = pd.concat([dfmulheres, dfhomens])
 
+
 # Título do dashboard
 st.title("Dashboard de Parlamentares")
 
@@ -27,9 +28,9 @@ genero = st.selectbox(
 
 # Filtragem por gênero
 if genero == "Feminino":
-    df_filtrado = df[df['genero'] == 'F']
+    df_filtrado = df[df['siglaSexo'] == 'F']
 elif genero == "Masculino":
-    df_filtrado = df[df['genero'] == 'M']
+    df_filtrado = df[df['siglaSexo'] == 'M']
 else:
     df_filtrado = df
 
