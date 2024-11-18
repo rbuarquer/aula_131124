@@ -13,7 +13,9 @@ data_homens = response_homens.json()['dados'] #Extract data from JSON response
 
 # Create DataFrames from the fetched data
 dfmulheres = pd.DataFrame(data_mulheres)
+dfmulheres['sexo'] = 'F'
 dfhomens = pd.DataFrame(data_homens)
+dfhomens['sexo'] = 'M'
 df = pd.concat([dfmulheres, dfhomens])
 
 
@@ -28,12 +30,16 @@ genero = st.selectbox(
 
 # Filtragem por gênero
 if genero == "Feminino":
-    df_filtrado = df[df['siglaSexo'] == 'F']
+    df_filtrado = df[df['sexo'] == 'F']
 elif genero == "Masculino":
-    df_filtrado = df[df['siglaSexo'] == 'M']
+    df_filtrado = df[df['sexo'] == 'M']
 else:
     df_filtrado = df
 
 # Exibindo os dados filtrados
 st.dataframe(df_filtrado)
+
+# Exibindo contagem por gênero
+st.write("Contagem por gênero:")
+st.write(df['sexo'].value_counts())
 
