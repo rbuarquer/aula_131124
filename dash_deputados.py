@@ -36,6 +36,3 @@ else:
 # Exibindo os dados filtrados
 st.dataframe(df_filtrado)
 
-# Exibindo contagem por gênero
-st.write("Contagem por gênero:")
-st.write(df['genero'].value_counts())
