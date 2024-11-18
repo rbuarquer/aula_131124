@@ -43,3 +43,21 @@ st.dataframe(df_filtrado)
 st.write("Contagem por gênero:")
 st.write(df['sexo'].value_counts())
 
+import plotly.express as px
+contagem_estado = df_filtrado.groupby('siglaUf').size().reset_index(name='quantidade')
+
+# Gráfico de barras com Plotly Express
+st.write("Número de parlamentares por estado:")
+if not contagem_estado.empty:
+    fig = px.bar(
+        contagem_estado,
+        x='siglaUf',
+        y='quantidade',
+        title='Número de Parlamentares por Estado',
+        labels={'siglaUf': 'Estado', 'quantidade': 'Quantidade'},
+        color='siglaUf',
+    )
+    st.plotly_chart(fig)
+else:
+    st.write("Não há dados disponíveis para o filtro selecionado.")
+
